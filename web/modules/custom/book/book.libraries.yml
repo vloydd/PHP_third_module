@@ -1,0 +1,11 @@
+book_libraries:
+  css:
+    base:
+      css/style.css: {}
+book:
+  dependencies:
+    - core/jquery
+    - core/ajax
+  css:
+    base:
+      css/style.css: {}
