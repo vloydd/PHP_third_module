@@ -1,0 +1,22 @@
+{{ attach_library('vloyd/vloyd_libraries') }}
+<h2 class="form_message_intro">Hello My Friend, You Can Add Here Your Review</h2>
+<div class="book_reviews_form">
+  {{ form }}
+</div>
+{% if book_reviews %}
+  <h2 class="form_message_intro">Look at Our Previous Reviews</h2>
+  <div id="book_reviews">
+    {{ book_reviews }}
+  </div>
+{{ pager }}
+{% endif %}
+{#<div class="guest_table-wrapper">#}
+{#  {% for items in book_reviews %}#}
+{#    <p class="guest_name guest_item">{{ items.name }}</p>#}
+{#  {% endfor %}#}
+{#</div>#}
+
+{#<div id="book_reviews">#}
+{#  {{ book_reviews }}#}
+{#</div>#}
+{#{{ pager }}#}

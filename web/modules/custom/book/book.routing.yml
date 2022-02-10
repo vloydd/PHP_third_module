@@ -1,8 +1,0 @@
-book.main-page:
-  path: '/book'
-  defaults:
-    _controller: '\Drupal\book\Controller\BookPage::content'
-    _title: 'Guest Book Page'
-  requirements:
-    _permission: 'access content'
-

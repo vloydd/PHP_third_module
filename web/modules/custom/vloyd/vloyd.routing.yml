@@ -1,0 +1,7 @@
+vloyd.main-page:
+  path: '/book'
+  defaults:
+    _controller: '\Drupal\vloyd\Controller\BookPage::content'
+    _title: 'Guest Book Page'
+  requirements:
+    _permission: 'access content'
