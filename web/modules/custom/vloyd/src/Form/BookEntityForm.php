@@ -5,22 +5,16 @@ namespace Drupal\vloyd\Form;
 use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Ajax\AjaxResponse;
-use Drupal\Core\Ajax\HtmlCommand;
 use Drupal\Core\Ajax\RedirectCommand;
-use Drupal\Core\Form\FormBase;
 use Drupal\Core\Url;
-use Drupal\file\Entity\File;
+
 /**
- * Our Enity Class.
+ * Our Book Entity Class for Setting and Adding Form And Shows Results.
  */
 class BookEntityForm extends ContentEntityForm {
 
   /**
-   * Func for Building Our Form.
-   *
-   * @param array $form
-   *   Hello.
-   *   Hello.
+   * Func for Building Our Form and Connecting Ajax Into it.
    */
   public function buildForm(array $form, FormStateInterface $form_state): array {
     $form = parent::buildForm($form, $form_state);
@@ -31,29 +25,6 @@ class BookEntityForm extends ContentEntityForm {
       'wrapper' => 'form_wrapper',
       'effect' => 'fade',
       'progress' => [
-        'type' => 'fading_circle',
-      ],
-    ];
-    $form['name']['widget'][0]['value']['#ajax'] = [
-      'disable-refocus' => TRUE,
-      'event' => 'change',
-      'progress' => [
-        'type' => 'none',
-      ],
-    ];
-
-    $form['email']['widget'][0]['value']['#ajax'] = [
-      'disable-refocus' => TRUE,
-      'event' => 'change',
-      'progress' => [
-        'type' => 'throbber',
-      ],
-    ];
-
-    $form['phone']['widget'][0]['value']['#ajax'] = [
-      'disable-refocus' => TRUE,
-      'event' => 'change',
-      'progress' => [
         'type' => 'throbber',
       ],
     ];
@@ -61,22 +32,7 @@ class BookEntityForm extends ContentEntityForm {
   }
 
   /**
-   * HEllo.
-   * @param array $form
-   *
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
-   *
-   * @return void
-   */
-  public function submitForm(array &$form, FormStateInterface $form_state):void {
-    parent::submitForm($form, $form_state);
-  }
-
-  /**
-   * @param array $form
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
-   *
-   * @return array|\Drupal\Core\Ajax\AjaxResponse
+   * Func to Set how Ajax Should Work After Pushing Submit.
    */
   public function setMessage(array &$form, FormStateInterface $form_state) {
     $response = new AjaxResponse();

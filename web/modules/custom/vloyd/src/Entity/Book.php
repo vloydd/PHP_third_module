@@ -6,10 +6,9 @@ use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
-use Drupal\Core\Url;
 
 /**
- * Defines the Book entity.
+ * Defines the Book Review Entity.
  *
  * @ingroup book
  *
@@ -31,20 +30,20 @@ use Drupal\Core\Url;
 class Book extends ContentEntityBase implements ContentEntityInterface {
 
   /**
-   * {@inheritDoc}
+   * Func to set Our Basic Fields that Makes Book Review a Real Book Review.
    */
-  public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
+  public static function baseFieldDefinitions(EntityTypeInterface $entity_type): array {
 
-    // Standard field, used as unique if primary index.
+    // SettingID.
     $fields['id'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('ID'))
-      ->setDescription(t('The ID of the Contact entity.'))
+      ->setDescription(t('The ID of the Book Review.'))
       ->setReadOnly(TRUE);
 
-    // Standard field, unique outside of the scope of the current project.
+    // SettingUUID.
     $fields['uuid'] = BaseFieldDefinition::create('uuid')
       ->setLabel(t('UUID'))
-      ->setDescription(t('The UUID of the Contact entity.'))
+      ->setDescription(t('The UUID of the Book Review.'))
       ->setReadOnly(TRUE);
 
     // NameField.
@@ -85,6 +84,7 @@ class Book extends ContentEntityBase implements ContentEntityInterface {
       ->setLabel(t('Email'))
       ->setDescription(t('Enter Your Email'))
       ->setDefaultValue(NULL)
+      ->setRequired(TRUE)
       ->setSetting('max_length', 70)
       ->setPropertyConstraints('value', [
         'Length' => [
@@ -96,7 +96,6 @@ class Book extends ContentEntityBase implements ContentEntityInterface {
           'message' => 'Your Email Seems NOT to be Valid',
         ],
       ])
-      ->setRequired(TRUE)
       ->setDisplayOptions('form', [
         'type' => 'string',
         'label' => 'hidden',
@@ -115,18 +114,20 @@ class Book extends ContentEntityBase implements ContentEntityInterface {
       ->setLabel(t('Phone'))
       ->setDescription(t('Enter Your Phone Number'))
       ->setDefaultValue(NULL)
+      ->setRequired(TRUE)
       ->setSetting('max_length', 15)
       ->setPropertyConstraints('value', [
         'Length' => [
           'max' => 15,
           'maxMessage' => 'Your Phone Number Should NOT be Longer than 15 Symbols',
+          'min' => 10,
+          'minMessage' => 'Your Phone Number Should be Longer than 10 Symbols',
         ],
         'Regex' => [
-          'pattern' => '/[0-9]{10,15}/',
+          'pattern' => '/[0-9]/',
           'message' => 'Your Phone Number Seems NOT to be Valid. Please, Use Correct Symbols.',
         ],
       ])
-      ->setRequired(TRUE)
       ->setDisplayOptions('form', [
         'type' => 'string',
         'label' => 'hidden',
@@ -145,6 +146,8 @@ class Book extends ContentEntityBase implements ContentEntityInterface {
       ->setDescription(t('Enter Your Message Review.'))
       ->setDefaultValue(NULL)
       ->setRequired(TRUE)
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE)
       ->setSetting('max_length', 1000)
       ->setPropertyConstraints('value', [
         'Length' => [
@@ -159,9 +162,7 @@ class Book extends ContentEntityBase implements ContentEntityInterface {
       ->setDisplayOptions('view', [
         'type' => 'text_default',
         'label' => 'hidden',
-      ])
-      ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE);
+      ]);
 
     // AvatarField.
     $fields['avatar'] = BaseFieldDefinition::create('image')
@@ -169,14 +170,14 @@ class Book extends ContentEntityBase implements ContentEntityInterface {
       ->setDescription(t('Please, Upload Your Avatar.'))
       ->setRequired(FALSE)
       ->setDefaultValue(NULL)
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE)
       ->setSettings([
         'file_directory' => 'book/avatars/',
         'alt_field_required' => FALSE,
         'file_extensions' => 'png jpg jpeg',
         'max_filesize' => 2097152,
       ])
-      ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE)
       ->setDisplayOptions('view', [
         'label' => 'hidden',
         'type' => 'image',
@@ -191,14 +192,14 @@ class Book extends ContentEntityBase implements ContentEntityInterface {
       ->setDescription(t('Please, Upload Your Photo Review.'))
       ->setRequired(FALSE)
       ->setDefaultValue(NULL)
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE)
       ->setSettings([
         'file_directory' => 'book/photos/',
         'alt_field_required' => FALSE,
         'file_extensions' => 'png jpg jpeg',
         'max_filesize' => 5242880,
       ])
-      ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE)
       ->setDisplayOptions('view', [
         'label' => 'hidden',
         'type' => 'image',
@@ -216,7 +217,7 @@ class Book extends ContentEntityBase implements ContentEntityInterface {
         'type' => 'datetime_custom',
         'label' => 'hidden',
         'settings' => [
-          'data_format' => 'm-d-Y H:i:s',
+          'data_format' => 'm/d/y h:i:s',
         ],
       ]);
 
