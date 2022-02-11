@@ -16,6 +16,7 @@ function vloyd_theme($existing, $type, $theme, $path) {
     "vloyd-theme" => [
       "variables" => [
         'form' => [],
+        'pager' => [],
         'book_reviews' => [],
       ],
     ],
