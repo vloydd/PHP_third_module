@@ -5,6 +5,8 @@
  * File Comment.
  */
 
+use Drupal\Core\Render\Element;
+
 /**
  * Implements hook_theme().
  */
@@ -16,5 +18,32 @@ function vloyd_theme($existing, $type, $theme, $path) {
         'book_reviews' => [],
       ],
     ],
+    'book' => [
+      'template' => 'book',
+      'render element' => 'elements',
+    ],
   ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function template_preprocess_book (&$variables) {
+ //Setting Our Entity Info and Pushing it Into Twig.
+  $variables['content'] = [];
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+
+  // For Default Avatar, if Book Review Haven't One.
+  if (count($variables['content']['avatar']) < 4) {
+    $variables['content']['avatar'] = [
+      '#theme' => 'image',
+      '#uri' => '/modules/custom/vloyd/files/default.png',
+      '#attributes' => [
+        'alt' => 'who are ya?',
+        'class' => 'book_avatar_defaults',
+      ],
+    ];
+  }
 }

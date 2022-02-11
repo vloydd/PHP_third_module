@@ -1,0 +1,49 @@
+<div class="book_table">
+  <div class="book_table-basic">
+    <div class="book_table-publishedByOn book_table-author">
+      <p class="book_table-publishedByOn-title">Published by: </p>
+      <ul class="book_table-publishedByOn-list">
+        <li>
+          <div class="book_name_created_wrapper">
+            <div class="book_item book_name">
+              {{ content.name }}
+            </div>
+            <p class="book_prefixes book_label"> at </p>
+            <div class="book_created">
+              {{ content.created }}
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="book_email_wrapper">
+            <p class="book_email book_label">Email: </p>
+            <p class="book_email_item book_item">
+              {{ content.email }}
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="book_phone_wrapper">
+            <p class="book_phone book_label">Phone Number: </p>
+            <p class="book_phone_item book_item">
+            {{ content.phone }}
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="book_item book_avatar">
+      {{ content.avatar }}
+    </div>
+  </div>
+  <div class="book_table-main">
+    <div class="book_review-wrapper book_item">
+      <p class="book_review book_review-item book_item">{{ content.review }}</p>
+    </div>
+    {% if content.image %}
+      <div class="book_item book_image">
+        {{ content.image}}
+     </div>
+    {% endif %}
+  </div>
+</div>

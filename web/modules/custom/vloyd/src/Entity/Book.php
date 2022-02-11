@@ -106,7 +106,6 @@ class Book extends ContentEntityBase implements ContentEntityInterface {
       ->setDisplayOptions('view', [
         'type' => 'string',
         'label' => 'hidden',
-
       ]);
 
     // PhoneNumberField.
