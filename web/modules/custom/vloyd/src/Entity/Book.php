@@ -21,9 +21,14 @@ use Drupal\Core\Entity\ContentEntityInterface;
  *     "uuid" = "uuid",
  *   },
  *    handlers = {
+ *   "views_data" = "Drupal\views\EntityViewsData",
+ *   "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
  *     "form" = {
  *       "default" = "Drupal\vloyd\Form\BookEntityForm",
  *     },
+ *   },
+ *   links = {
+ *     "edit-form" = "/book/{book}/edit",
  *   },
  * )
  */

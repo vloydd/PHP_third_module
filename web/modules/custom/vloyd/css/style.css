@@ -13,13 +13,9 @@
   max-width: 100%;
 }
 body {
-  /*overflow: hidden;*/
   background-size: cover;
   background-position: center center;
-  /*background-image: radial-gradient( circle farthest-corner at -8.9% 51.2%,  rgba(255,124,0,1) 0%, rgba(255,124,0,1) 15.9%, rgba(255,163,77,1) 15.9%, rgba(255,163,77,1) 24.4%, rgba(79,30,37,1) 24.5%, rgba(31,9,31,0.9) 66% );*/
 }
-/*header,*/
-/*footer,*/
 h1.page-title,
 h2 {
   font-family: 'Mochiy Pop P One', sans-serif;
@@ -29,7 +25,6 @@ h2 {
   margin: 20px auto;
 }
 #content {
-  /*max-width: 600px;*/
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -83,7 +78,7 @@ h2 {
 .book_email_wrapper .field {
   word-break: break-all;
 }
-.book_created .field{
+.book_created .field {
   border-bottom: 1px solid #0c0d0e;
 }
 #book_reviews,
@@ -100,4 +95,21 @@ h2 {
   .book_image {
     max-width: 180px;
   }
+}
+.book_administer_buttons {
+  margin-top: auto;
+}
+.book_administer {
+  margin-bottom: 10px;
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px 6px;
+  color: #212529;
+  background-color: #ffc107;
+  border: 2px outset #ffc107;
+  text-decoration: none;
+}
+.book_table-main {
+  display: flex;
+  flex-direction: column;
 }

@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Render\Element;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_theme().
@@ -35,7 +36,7 @@ function template_preprocess_book (&$variables) {
     $variables['content'][$key] = $variables['elements'][$key];
   }
 
-  // For Default Avatar, if Book Review Haven't One.
+  // For Default Avatar, if Book Review Haven't One(Enought Fields).
   if (count($variables['content']['avatar']) < 4) {
     $variables['content']['avatar'] = [
       '#theme' => 'image',
@@ -46,4 +47,15 @@ function template_preprocess_book (&$variables) {
       ],
     ];
   }
+
+  // Buttons to Administer.
+  $entity = $variables['elements']['#book'];
+  $variables['button'] = [
+    '#url' => Url::fromRoute('entity.book.edit', ['book' => $entity->id()],),
+    '#type' => 'link',
+    '#attributes' => [
+      'class' => 'book_administer',
+    ],
+    '#title' => 'Administer Review',
+  ];
 }

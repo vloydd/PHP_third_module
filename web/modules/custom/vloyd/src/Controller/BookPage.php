@@ -40,10 +40,10 @@ class BookPage extends ControllerBase {
       ->getStorage('book')
       ->create();
 
-    // Reviews.
+    // Reviews and Pager.
     $form = $this->formBuilder->getForm($entity, 'default');
     $storage_usage = $this->entityManager->getStorage('book');
-    $query = $storage_usage->getQuery()->sort('id', "DESC");
+    $query = $storage_usage->getQuery()->sort('id', "DESC")->pager(5);
     $reviews = $query->execute();
     $review = $storage_usage->loadMultiple($reviews);
     $view_mode = $this->entityManager->getViewBuilder('book');

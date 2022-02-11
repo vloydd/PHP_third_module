@@ -5,3 +5,11 @@ vloyd.main-page:
     _title: 'Guest Book Page'
   requirements:
     _permission: 'access content'
+
+entity.book.edit:
+  path: '/book/{book}/edit'
+  defaults:
+    _entity_form: 'book.default'
+    _title: 'Edit Your Review'
+  requirements:
+    _permission: 'administer site configuration'
