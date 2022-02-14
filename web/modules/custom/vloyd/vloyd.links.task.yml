@@ -1,0 +1,14 @@
+book.edit:
+  route_name: entity.book.edit
+  base_route: entity.book.canonical
+  title: Edit
+
+book.delete:
+  route_name: entity.book.delete
+  base_route: entity.book.canonical
+  title: Delete
+
+book.view:
+  route_name: entity.book.canonical
+  base_route: entity.book.canonical
+  title: Personal View

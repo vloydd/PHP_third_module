@@ -51,6 +51,9 @@ h2 {
 .book_avatar img {
   max-width: 150px;
 }
+.book_image img.img-fluid {
+  max-width: 300px;
+}
 .book_table-basic {
   min-width: 325px;
   max-width: 325px;
@@ -112,4 +115,18 @@ h2 {
 .book_table-main {
   display: flex;
   flex-direction: column;
+}
+.book_container {
+  max-width: 980px;
+  margin: 0 auto;
+}
+.book_avatar_wrapper,
+.book_review_wrapper,
+.book_image_wrapper {
+  list-style: none;
+}
+.book_review .book_label,
+.book_avatar .book_label,
+.book_image .book_label {
+  display: none;
 }

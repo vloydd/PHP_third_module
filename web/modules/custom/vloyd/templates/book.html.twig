@@ -30,21 +30,32 @@
             </p>
           </div>
         </li>
+        <li class="book_avatar_wrapper">
+          <div class="book_item book_avatar">
+            <p class="book_avatar_text book_label">Avatar: </p>
+            {{ content.avatar }}
+          </div>
+        </li>
       </ul>
-    </div>
-    <div class="book_item book_avatar">
-      {{ content.avatar }}
     </div>
   </div>
   <div class="book_table-main">
-    <div class="book_review-wrapper book_item">
-      <p class="book_review book_review-item book_item">{{ content.review }}</p>
-    </div>
-    {% if content.image %}
-      <div class="book_item book_image">
-        {{ content.image}}
-     </div>
-    {% endif %}
+    <ul class="book_table-main_list">
+      <li class="book_review_wrapper">
+        <div class="book_review book_item">
+          <p class="book_review_text book_label">Review: </p>
+          <p class="book_review book_review-item book_item">{{ content.review }}</p>
+        </div>
+      </li>
+        {% if content.image %}
+      <li class="book_image_wrapper">
+        <div class="book_item book_image">
+          <p class="book_image_text book_label">Image: </p>
+          {{ content.image}}
+        </div>
+      </li>
+        {% endif %}
+    </ul>
     {% if user.hasPermission('administer nodes') %}
       <div class="book_administer_buttons">
         {{ button }}

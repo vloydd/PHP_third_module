@@ -13,3 +13,19 @@ entity.book.edit:
     _title: 'Edit Your Review'
   requirements:
     _permission: 'administer site configuration'
+
+entity.book.delete:
+  path: '/book/{book}/delete'
+  defaults:
+    _entity_form: 'book.delete'
+    _title: 'Delete Your Review'
+  requirements:
+    _permission: 'administer site configuration'
+
+entity.book.canonical:
+  path: '/book/{book}'
+  defaults:
+    _entity_view: 'book'
+    _title: 'Manage This Review'
+  requirements:
+    _permission: 'administer site configuration'

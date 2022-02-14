@@ -44,7 +44,7 @@ function template_preprocess_book (&$variables) {
       '#uri' => '/modules/custom/vloyd/files/default.png',
       '#attributes' => [
         'alt' => 'who are ya?',
-        'class' => 'book_avatar_defaults',
+        'class' => 'book_avatar_defaults book_avatar',
       ],
     ];
   }
@@ -52,7 +52,7 @@ function template_preprocess_book (&$variables) {
   // Buttons to Administer.
   $entity = $variables['elements']['#book'];
   $variables['button'] = [
-    '#url' => Url::fromRoute('entity.book.edit', ['book' => $entity->id()],),
+    '#url' => Url::fromRoute('entity.book.canonical', ['book' => $entity->id()],),
     '#type' => 'link',
     '#attributes' => [
       'class' => 'book_administer',

@@ -25,10 +25,13 @@ use Drupal\Core\Entity\ContentEntityInterface;
  *   "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
  *     "form" = {
  *       "default" = "Drupal\vloyd\Form\BookEntityForm",
+ *       "delete" = "Drupal\vloyd\Form\BookEntityDelete"
  *     },
  *   },
  *   links = {
+ *     "canonical" = "/book/{book}",
  *     "edit-form" = "/book/{book}/edit",
+ *     "delete-form" = "/book/{book}/delete"
  *   },
  * )
  */
