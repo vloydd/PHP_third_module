@@ -47,7 +47,7 @@ class BookEntityDelete extends ContentEntityConfirmFormBase {
    * Func to Set Redirect After Cancelling.
    */
   public function getCancelUrl():Url {
-    return new Url('vloyd.main-page');
+    return new Url('entity.book.canonical', ['book' => $this->entity->id()]);
   }
 
   /**
